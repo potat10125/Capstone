@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <title>Create Blog</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/6/tinymce.min.js" referrerpolicy="origin"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@tinymce/tinymce-jquery@1/dist/tinymce-jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="row m-4 border border-dark">
+        <div class="col-3 text-center m-3">
+            <span class="h3">Blog Creator</span>
+        </div>
+        <div class="col-7 text-center m-3">
+            <form action="createBlog" method="POST">
+                <div class="form-group row">
+                    <label for="name" class="col-3 col-form-label">
+                        Title</label>
+                    <div class="col-9">
+                        <input type="text" name="title"
+                               id="title" class="form-control"/>
+                    </div>
+                </div>
+                <div>
+                  <textarea id="text"> </textarea>
+                  <input type="hidden" name="blog"
+                         id="blog"}/>
+                </div>
+                <div class="form-group row">
+                    <label for="description" class="col-3 col-form-label">
+                        Hashtags</label>
+                    <div class="col-9">
+                        <input type="text" name="hashtags"
+                               id="hashtags" class="form-control"/>
+                    </div>
+                </div>
+
+                <button id="button" type="submit" class="btn btn-primary">Submit Blog</button>
+            </form>
+        </div>
+    </div>
+    <script>
+      document.getElementById("button").onclick = function() {myFunction()};
+      function myFunction() {
+        document.getElementById("blog").value = tinymce.activeEditor.getContent();
+      }
+    </script>
+    <script>
+      $('textarea').tinymce({
+        height: 500,
+        menubar: false,
+        plugins: [
+           'a11ychecker','advlist','advcode','advtable','autolink','checklist','export',
+           'lists','link','image','charmap','preview','anchor','searchreplace','visualblocks',
+           'powerpaste','fullscreen','formatpainter','insertdatetime','media','table','help','wordcount'
+        ],
+        toolbar: 'undo redo | a11ycheck casechange blocks | bold italic backcolor | alignleft aligncenter alignright alignjustify | bullist numlist checklist outdent indent | removeformat | code table help'
+      });
+    </script>
+  </body>
+</html>
