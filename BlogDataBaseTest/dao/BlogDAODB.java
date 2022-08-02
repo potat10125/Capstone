@@ -88,13 +88,14 @@ public class BlogDAODB implements BlogDAO{
     }
 
     @Override
-    public List<Blog> getBlogsByAuthorId(int id) {
+    public List<Blog> getBlogsByAuthor(String user) {
         final String sql = "SELECT * FROM blog WHERE author = ?;";
-        List<Blog> blogs = jdbc.query(sql, new BlogMapper(), id);  
+        List<Blog> blogs = jdbc.query(sql, new BlogMapper(), user);  
         for (Blog blog : blogs){
             blog.setHashtags(getHashtagsForBlog(blog.getId()));
         }
-        return blogs;     }
+        return blogs;     
+    }
 
     @Override
     public List<Blog> getBlogsByHashtag(String tag) {
@@ -129,10 +130,9 @@ public class BlogDAODB implements BlogDAO{
     @Override    
     @Transactional
     public Blog addBlog(Blog blog) {  
-        // MODIFY TO ACCOUNT FOR AUTHOR CODE TO SET AUTHOR LATER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!                
-        final String sql = "INSERT INTO blog(content, title, approved, publish_date, author) VALUES (?, ?, ?, ?, 'TheBoss');";
+        final String sql = "INSERT INTO blog(content, title, approved, publish_date, author) VALUES (?, ?, ?, ?, ?);";
         jdbc.update(sql, blog.getContent(), blog.getTitle(), 
-                blog.getApproved(), blog.getPublishDate());
+                blog.getApproved(), blog.getPublishDate(), blog.getUser());
         int newId = jdbc.queryForObject("SELECT LAST_INSERT_ID()", Integer.class);
         blog.setId(newId);
         updateHashtags(blog);    
@@ -142,9 +142,8 @@ public class BlogDAODB implements BlogDAO{
 
     @Override
     public void updateBlog(Blog blog) {
-        // MODIFY TO ACCOUNT FOR AUTHOR CODE TO SET AUTHOR LATER !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!        
-        final String sql = "UPDATE blog SET content = ?, title = ?, approved = ?, publish_date = ? WHERE id = ?;";
-        jdbc.update(sql , blog.getContent(), blog.getTitle(), blog.getApproved(), blog.getPublishDate(), blog.getId());  
+        final String sql = "UPDATE blog SET content = ?, title = ?, author = ?, approved = ?, publish_date = ? WHERE id = ?;";
+        jdbc.update(sql , blog.getContent(), blog.getTitle(), blog.getUser(), blog.getApproved(), blog.getPublishDate(), blog.getId());  
         updateHashtags(blog);  
     }
 
@@ -162,6 +161,7 @@ public class BlogDAODB implements BlogDAO{
             blog.setId(rs.getInt("id"));
             blog.setTitle(rs.getString("title"));
             blog.setContent(rs.getString("content"));
+            blog.setUser(rs.getString("author"));
             blog.setApproved(rs.getBoolean("approved"));
             blog.setPublishDate(rs.getString("publish_Date"));                 
             return blog;

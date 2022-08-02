@@ -13,7 +13,7 @@ public class Blog {
     private int id;
     private String content;
     private String title;
-    private Author author;
+    private String user;
     private boolean approved;
     private String publishDate; 
     private List<String> hashtags = new ArrayList<>();
@@ -36,11 +36,11 @@ public class Blog {
     public void setTitle(String title){
         this.title = title;
     }
-    public Author getAuthor(){
-        return author;
+    public String getUser(){
+        return user;
     }
-    public void setAuthor(Author author){
-        this.author = author;
+    public void setUser(String user){
+        this.user = user;
     }
     public boolean getApproved(){
         return approved;
@@ -67,7 +67,7 @@ public class Blog {
         hash = 61 * hash + this.id;
         hash = 61 * hash + Objects.hashCode(this.content);
         hash = 61 * hash + Objects.hashCode(this.title);
-        hash = 61 * hash + Objects.hashCode(this.author);
+        hash = 61 * hash + Objects.hashCode(this.user);
         hash = 61 * hash + Objects.hashCode(this.approved);
         hash = 61 * hash + Objects.hashCode(this.publishDate);
         hash = 61 * hash + Objects.hashCode(this.hashtags);
@@ -98,7 +98,7 @@ public class Blog {
         if (!Objects.equals(this.title, other.title)) {
             return false;
         }
-        if (!Objects.equals(this.author, other.author)) {
+        if (!Objects.equals(this.user, other.user)) {
             return false;
         }
         if (!Objects.equals(this.publishDate, other.publishDate)) {
