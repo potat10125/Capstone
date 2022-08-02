@@ -63,13 +63,11 @@ public class BlogController {
 		Blog blog = new Blog();
 		blog.content = "content";
 		blog.title = "title";
-		blog.date="june 1, 2020";
+		blog.date="some date";
 		blog.hashtags="#hashtag";
-		blog.author="joe mama";
+		blog.author="author";
 		
-		List<Blog> blogs = new ArrayList<Blog>();
-		blogs.add(blog);
-		model.addAttribute("blogs", blogs);
+		model.addAttribute("blog", blog);
         return "viewBlog";
 	}
 	@GetMapping("/viewBlog/{blogId}")
@@ -77,14 +75,12 @@ public class BlogController {
 //		Blog blog = blogDao.get(id);
 		Blog blog = new Blog();
 		blog.content = "content";
-		blog.hashtags="#hashtag";
 		blog.title = "title";
-		blog.date="june 1, 2020";
-		blog.author="joe mama";
+		blog.date="some date";
+		blog.hashtags="#hashtag";
+		blog.author="author";
 		
-		List<Blog> blogs = new ArrayList<Blog>();
-		blogs.add(blog);
-		model.addAttribute("blogs", blogs);
+		model.addAttribute("blog", blog);
         return "viewBlog";
     }
 

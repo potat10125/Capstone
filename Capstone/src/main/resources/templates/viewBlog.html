@@ -12,6 +12,17 @@
   </head>
   <body>
     <!-- Main Body of Page -->
+    <div class="row m-4 border border-dark">
+        <div class="col text-center m-3">
+            <a href="/Blogs" class="btn btn-outline-primary btn-lg">Blogs</a>
+        </div>
+        <div class="col text-center m-3">
+            <a href="/Home" class="btn btn-outline-primary btn-lg">Home</a>
+        </div>
+        <div class="col text-center m-3">
+            <a href="/createBlog" class="btn btn-outline-primary btn-lg">Create</a>
+        </div>
+    </div>
 
     <div class="container">
         <div class="row m-4">
@@ -22,39 +33,22 @@
     <div class="row m-4 border border-dark" id="title" name="title">
     </div>
     <div class="col border border-dark">
-      <tbody>
-        <tr th:each="blog : ${blogs}">
-              <td th:text='${blog.title}'>Course Name</td>
-        </tr>
-      </tbody>
+      <div class="col border border-dark">
+        <div th:text="${blog.title}"></div>
+      </div>
+      <div class="col border border-dark">
+        <div th:text="${blog.content}"></div>
+      </div>
+      <div class="col border border-dark">
+        <div th:text="${blog.author}"></div>
+      </div>
+      <div class="col border border-dark">
+        <div th:text="${blog.hashtags}"></div>
+      </div>
+      <div class="col border border-dark">
+        <div th:text="${blog.date}"></div>
+      </div>
     </div>
-    <div class="col border border-dark">
-      <tbody>
-        <tr th:each="blog : ${blogs}">
-              <td th:text='${blog.content}'>Course Name</td>
-        </tr>
-      </tbody>
-    </div>
-    <div class="col border border-dark">
-      <tbody>
-        <tr th:each="blog : ${blogs}">
-              <td th:text='${blog.hashtags}'>Course Name</td>
-        </tr>
-      </tbody>
-    </div><div class="col border border-dark">
-      <tbody>
-        <tr th:each="blog : ${blogs}">
-              <td th:text='${blog.author}'>Course Name</td>
-        </tr>
-      </tbody>
-    </div><div class="col border border-dark">
-      <tbody>
-        <tr th:each="blog : ${blogs}">
-              <td th:text='${blog.date}'>Course Name</td>
-        </tr>
-      </tbody>
-    </div>
-
     <!-- End main body -->
 
     <!-- Optional JavaScript -->
