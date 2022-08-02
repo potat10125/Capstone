@@ -33,22 +33,26 @@
     <div class="row m-4 border border-dark" id="title" name="title">
     </div>
     <div class="col border border-dark">
-      <div class="col border border-dark">
-        <div th:text="${blog.publishDate}"></div>
+      <div class="col">
+          <font size ="+7">
+          <div th:text="${blog.title}" style="text-align: center;"></div>
+          </font>
       </div>
-      <div class="col border border-dark">
-        <div th:text="${blog.title}"></div>
-      </div>
+
       <div class="col border border-dark">
         <div th:text="${blog.content}"></div>
       </div>
-      <div class="col border border-dark">
+      <div class="col">
         <div th:text="${blog.user}"></div>
+      </div>      
+      <div class="col">
+        <div th:text="${blog.publishDate}"></div>
       </div>
+      
       <div class="col border border-dark">
         <tbody>
             <tr th:each="hashtag : ${blog.hashtags}">
-                <td th:text="'#'+${hashtag}">Course ID</td>
+                <td th:text="'#'+${hashtag}">Hashtags</td>
             </tr>
         </tbody>
       </div>

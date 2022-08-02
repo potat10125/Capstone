@@ -1,5 +1,7 @@
 package com.sg.capstone.dao;
 
+import com.sg.capstone.dao.AuthorDAODB.AuthorMapper;
+import com.sg.capstone.model.Author;
 import com.sg.capstone.model.Blog;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -27,7 +29,8 @@ public class BlogDAODB implements BlogDAO{
             final String sql = "SELECT * FROM blog WHERE id = ?;";
             Blog blog =  jdbc.queryForObject(sql, new BlogMapper(), id);
             blog.setHashtags(getHashtagsForBlog(blog.getId()));
-//            blog.setAuthor(getAuthorForBlog(blog.getId())); /////// 
+            blog.setUser(getAuthorForBlog(blog.getId()));
+            //System.out.println(getAuthorForBlog(blog.getId()));
             return blog;
         }catch (DataAccessException e){
             return null;
@@ -35,15 +38,15 @@ public class BlogDAODB implements BlogDAO{
     }
     
 //    USE ONCE AUTHOR AUTHOR DAO is implmented    
-//    private Author getAuthorForBlog(int id){
-//        try{
-//            final String sql = "SELECT a.* FROM author a JOIN blog b ON a.username = b.author WHERE b.id = ?";
-//            Author author = jdbc.query(sql, new AuthorMapper(), id);
-//            return author;
-//        }catch (DataAccessException e){
-//            return null;
-//        }        
-//    }
+    private String getAuthorForBlog(int id){
+        try{
+            final String sql = "SELECT a.* FROM authors a JOIN blog b ON a.username = b.author WHERE b.id = ?";
+            Author author = jdbc.queryForObject(sql, new AuthorMapper(), id);
+            return author.getUsername();
+        }catch (DataAccessException e){
+            return null;
+        }        
+    }
     
     private List<String> getHashtagsForBlog(int id){
         try{
