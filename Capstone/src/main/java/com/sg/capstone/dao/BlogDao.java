@@ -1,10 +1,25 @@
 package com.sg.capstone.dao;
 
+import com.sg.capstone.model.Blog;
 import java.util.List;
-import com.sg.capstone.model.*;
 
-public interface BlogDao {
-	public void addBlog(String author,String title, String content, List tags);
-	public List getAll();//returns a list of all blogs (from newest to oldest?)
-	public Blog get(int id);//returns blog with the id
+/**
+ *
+ * @author sammychan
+ */
+public interface BlogDAO {
+
+    Blog getBlogById(int id);
+    List<Blog> getAllBlogs();
+    List<Blog> getAllApprovedBlogs();
+    List<Blog> getAllUnapprovedBlogs();
+    List<Blog> getBlogsByAuthorId(int id);
+    List<Blog> getBlogsByHashtag(String tag);
+	
+    Blog getLatestBlog();
+    
+    Blog addBlog(Blog blog);
+    void updateBlog(Blog blog);
+    void deleteBlogById(int id);
+    
 }
