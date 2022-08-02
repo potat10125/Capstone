@@ -39,7 +39,7 @@ public class BlogController {
 		String content = request.getParameter("content");
 		String tags = request.getParameter("hashtags");
 		String author = request.getParameter("author");
-		if(author!=""){
+		if(true||author!=""){
 			Blog blog = new Blog();
 			blog.setApproved(authorDao.getAuthor(author).getPermissions());
 			blog.setUser(authorDao.getAuthor(author).getDisplayName());
@@ -78,6 +78,13 @@ public class BlogController {
 		Blog blog = blogDao.getBlogById(blogId);
 		model.addAttribute("blog", blog);
         return "viewBlog";
+    }
+	
+	@GetMapping("/Home")
+    public String displayBlog(Model model){
+		Blog blog = blogDao.getLatestBlog();
+		model.addAttribute("blog", blog);
+        return "Home";
     }
 
 }
