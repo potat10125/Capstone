@@ -29,4 +29,4 @@ CREATE TABLE hashtag(
 		FOREIGN KEY (blogID) REFERENCES blog(id) ON DELETE CASCADE
 );
 
-INSERT INTO authors VALUES("TheBoss", "Mr. Boss", TRUE);
+INSERT INTO authors VALUES("TheBoss", "Mr. Boss", "password123", TRUE);
