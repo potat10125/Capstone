@@ -39,10 +39,10 @@ public class BlogController {
 		String content = request.getParameter("content");
 		String tags = request.getParameter("hashtags");
 		String author = request.getParameter("author");
-		if(true||author!=""){
+		if(authorDao.getAuthor(author)!=null){
 			Blog blog = new Blog();
 			blog.setApproved(authorDao.getAuthor(author).getPermissions());
-			blog.setUser(authorDao.getAuthor(author).getDisplayName());
+			blog.setUser(author);
 			blog.setContent(content);
 			blog.setTitle(title);
 			blog.setHashtags(Arrays.asList(tags.split("#")));

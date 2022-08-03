@@ -44,11 +44,11 @@
       </div>
       <div class="col">
         <div th:text="${blog.user}"></div>
-      </div>      
+      </div>
       <div class="col">
         <div th:text="${blog.publishDate}"></div>
       </div>
-      
+
       <div class="col border border-dark">
         <tbody>
             <tr th:each="hashtag : ${blog.hashtags}">
@@ -56,8 +56,12 @@
             </tr>
         </tbody>
       </div>
-
     </div>
+    <script th:inline="javascript">
+      /*<![CDATA[*/
+      console.log([[${blog.user}]]);
+              /*]]>*/
+            </script>
     <!-- End main body -->
 
     <!-- Optional JavaScript -->

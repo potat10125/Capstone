@@ -47,11 +47,6 @@ public class AccountController {
 		return "/login";
 	}
 	
-	@GetMapping("/Home")
-    public String displayHome(Model model){
-		Blog blog = blogDao.getLatestBlog();
-		model.addAttribute("blog", blog);
-        return "Home";
-    }
+
 
 }

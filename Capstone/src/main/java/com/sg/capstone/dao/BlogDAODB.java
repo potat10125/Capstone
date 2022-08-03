@@ -163,7 +163,8 @@ public class BlogDAODB implements BlogDAO{
             blog.setTitle(rs.getString("title"));
             blog.setContent(rs.getString("content"));
             blog.setApproved(rs.getBoolean("approved"));
-            blog.setPublishDate(rs.getString("publish_Date"));                 
+            blog.setPublishDate(rs.getString("publish_Date"));      
+            blog.setUser(rs.getString("author"));      
             return blog;
         }    
     }    
