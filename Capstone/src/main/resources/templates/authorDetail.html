@@ -8,16 +8,14 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
-  <title th:text="'#'+${tag}"> </title>
+    <title th:text="${author.displayName}"> </title>
   </head>
   <body>
     <!-- Main Body of Page -->
-
                 <div class="col-6 text-left">
                     <span th:each="blog : ${blogs}" th:object = "${blog}" th:if="${blog.approved}">
                         <h3 th:text="${blog.title}">Title</h3><br/>
-                        <span><a th:text="${'by ' + blog.user}"
-                                    th:href="@{/authorDetail(id=${blog.user})} ">Author</a></span>
+                        <span th:text="${'by ' + blog.user}">Author</span>
                         <span th:text="${'- published ' + blog.publishDate}">Date</span><br/>                                                
                     </span>
                 </div>
@@ -33,4 +31,5 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
   </body>
 </html>
+
 
