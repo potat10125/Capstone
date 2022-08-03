@@ -15,6 +15,7 @@ public interface BlogDAO {
     List<Blog> getAllUnapprovedBlogs();
     List<Blog> getBlogsByAuthorId(int id);
     List<Blog> getBlogsByHashtag(String tag);
+    List<String> getAllTags();    
 	
     Blog getLatestBlog();
     

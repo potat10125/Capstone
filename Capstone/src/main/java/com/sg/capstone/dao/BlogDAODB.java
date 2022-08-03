@@ -153,6 +153,12 @@ public class BlogDAODB implements BlogDAO{
         final String sql = "DELETE FROM blog WHERE id = ?;";
         jdbc.update(sql, id);    
     }
+
+    @Override
+    public List<String> getAllTags(){
+        final String sql = "SELECT DISTINCT tag FROM hashtag WHERE tag is not null";
+        return jdbc.queryForList(sql, String.class);        
+    }    
     
     public static final class BlogMapper implements RowMapper<Blog> {
         @Override
