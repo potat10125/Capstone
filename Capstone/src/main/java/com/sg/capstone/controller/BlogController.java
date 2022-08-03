@@ -86,5 +86,42 @@ public class BlogController {
 		model.addAttribute("blog", blog);
         return "Home";
     }
+    
+     @GetMapping("/")
+    public String testDisplayBlog(Model model){
+        Blog blog = blogDao.getBlogById(1);
+        model.addAttribute("blog", blog);
+        return "index";
+    }
+    
+    @GetMapping("hashtag")
+    public String hashtagBlogs(String id, Model model){
+        List<Blog> blogs = blogDao.getBlogsByHashtag(id);
+        model.addAttribute("blogs", blogs);
+        model.addAttribute("tag", id);
+        return "hashtag";
+    }  
+    
+    @GetMapping("pendingBlogs")
+    public String getPendingBlogs(Model model){
+        List<Blog> blogs = blogDao.getAllUnapprovedBlogs();
+        model.addAttribute("blogs", blogs);
+        return "pendingBlogs";
+    }
+    @GetMapping("deleteBlog")
+    public String deleteBlog(HttpServletRequest request) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        blogDao.deleteBlogById(id);        
+        return "redirect:/pendingBlogs";
+    }
+    @GetMapping("approveBlog")
+    public String approveBlog(HttpServletRequest request, Model model) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        Blog blog = blogDao.getBlogById(id);
+        blog.setApproved(true);
+        blogDao.updateBlog(blog);
+                
+        return "redirect:/pendingBlogs";
+    }
 
 }

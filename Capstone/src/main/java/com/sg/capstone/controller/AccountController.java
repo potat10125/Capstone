@@ -46,7 +46,38 @@ public class AccountController {
 		}
 		return "/login";
 	}
+        
+        @GetMapping("/createAccount")
+        public String createAccountScreen(Model model){
+            return "createAccount";
+        }
+        
+        @PostMapping("/createAccount")
+        public String createAccount(Model model, HttpServletRequest request){
+            String username = request.getParameter("username");
+            String displayName = request.getParameter("displayName");
+            String password = request.getParameter("pw");
+            String pwConf = request.getParameter("pwConf");
+            if(password.equals(pwConf)){               
+                Author author = new Author();
+                author.setUsername(username);
+                author.setDisplayName(displayName);
+                author.setPass(password);
+                
+                authorDao.addAuthor(author);
+                
+                model.addAttribute("displayName", displayName);
+            }
+            return "redirect:/Blogs";
+        }
 	
-
+    @GetMapping("authorDetail")
+    public String authorDetail(String id, Model model){
+        Author author = authorDao.getAuthor(id);
+        List<Blog> blogs = blogDao.getBlogsByAuthorId(Integer.parseInt(id));
+        model.addAttribute("author", author);
+        model.addAttribute("blogs", blogs);
+        return "authorDetail";
+    }    
 
 }
