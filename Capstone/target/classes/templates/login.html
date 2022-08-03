@@ -16,6 +16,7 @@
     <!-- Main Body of Page -->
 
     <div class="container">
+      <button  id=logoutButton onClick="logoutFunction()">Logout</button>
       <div id="loginForm">
         <div  class="row m-4 border border-dark">
             <div class="col-3 text-center m-3">
@@ -50,7 +51,6 @@
       <script th:inline="javascript">
         /*<![CDATA[*/
         var user = [[${username}]];
-        console.log(user);
         document.getElementById("loginMessage").style.display="none";
         if(sessionStorage.getItem("loggedIn")!=null){
             document.getElementById("loginForm").style.display="none";
@@ -63,6 +63,16 @@
         }
 
         /*]]>*/
+      </script>
+      <script>//replace with window.location.reload(); for other pages
+        if(sessionStorage.getItem("loggedIn")==null){
+          document.getElementById("logoutButton").style.display="none";
+        }
+        function logoutFunction(){
+          sessionStorage.removeItem("username");
+          sessionStorage.removeItem("loggedIn");
+          window.location.href = "/login";
+        }
       </script>
 
     <!-- End main body -->
