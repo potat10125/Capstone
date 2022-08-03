@@ -27,7 +27,7 @@ public class HashtagController {
     @Autowired
     AuthorDAO authorDao;
     
-    /// Temporary Homepage DELETE LATER !!!!!!!!!!!!!!!!!!
+    /// Temporary Homepage DO NOT USE !!!!!!!!!!!!!!!!!!
     @GetMapping("/")
     public String testDisplayBlog(Model model){
         Blog blog = blogDao.getBlogById(1);
