@@ -76,7 +76,7 @@ public class AccountController {
     @GetMapping("authorDetail")
     public String authorDetail(String id, Model model){
         Author author = authorDao.getAuthor(id);
-        List<Blog> blogs = blogDao.getBlogsByAuthorId(Integer.parseInt(id));
+        List<Blog> blogs = blogDao.getBlogsByAuthor(id);
         model.addAttribute("author", author);
         model.addAttribute("blogs", blogs);
         return "authorDetail";
