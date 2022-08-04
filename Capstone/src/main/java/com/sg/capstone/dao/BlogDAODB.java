@@ -88,14 +88,26 @@ public class BlogDAODB implements BlogDAO{
         return blogs;         
     }
 
+/////// DO NOT USE
+//     @Override
+//     public List<Blog> getBlogsByAuthorId(int id) {
+//         final String sql = "SELECT * FROM blog WHERE author = ?;";
+//         List<Blog> blogs = jdbc.query(sql, new BlogMapper(), id);  
+//         for (Blog blog : blogs){
+//             blog.setHashtags(getHashtagsForBlog(blog.getId()));
+//         }
+//         return blogs;     
+//     }
+
     @Override
-    public List<Blog> getBlogsByAuthorId(int id) {
+    public List<Blog> getBlogsByAuthor(String user) {
         final String sql = "SELECT * FROM blog WHERE author = ?;";
-        List<Blog> blogs = jdbc.query(sql, new BlogMapper(), id);  
+        List<Blog> blogs = jdbc.query(sql, new BlogMapper(), user);  
         for (Blog blog : blogs){
             blog.setHashtags(getHashtagsForBlog(blog.getId()));
         }
-        return blogs;     }
+        return blogs;     
+    }
 
     @Override
     public List<Blog> getBlogsByHashtag(String tag) {
