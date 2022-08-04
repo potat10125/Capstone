@@ -79,8 +79,9 @@
                         </thead>
                         <tbody>
                             <tr th:each="blog : ${blogs}" th:object = "${blog}" th:if="!${blog.approved}">
-                                <td th:text="${blog.title + ' by ' + blog.user + 
-                                    '- published ' + blog.publishDate}">Name</td>
+                                <td><a th:text="${blog.title + ' by ' + blog.user + 
+                                    '- published ' + blog.publishDate}"
+                                    th:href="@{viewBlog/{id}(id=${blog.id})}">Name></a</td>
                                 <td><a href="#" th:href="@{/approveBlog(id=${blog.id})}">Approve</a></td>                                
                                 <td><a href="#" th:href="@{/deleteBlog(id=${blog.id})}">Delete</a></td>
                             </tr>
