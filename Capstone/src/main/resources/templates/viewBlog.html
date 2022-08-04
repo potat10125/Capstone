@@ -9,21 +9,61 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <title>Blog</title>
+    <style type="text/css">
+        body   
+        {  
+            height: 125vh;  
+            margin-top: 80px;  
+            padding: 30px;  
+            background-size: cover;  
+            font-family: sans-serif;  
+        }  
+        header {  
+            background-color: orange;  
+            position: fixed;  
+            left: 0;  
+            right: 0;  
+            top: 5px;  
+            height: 30px;  
+            display: flex;  
+            align-items: center;  
+            box-shadow: 0 0 25px 0 black;  
+        }  
+        header * {  
+            display: inline;  
+        }  
+        header li {  
+            margin: 20px;  
+        }  
+        header li a {  
+            color: blue;  
+            text-decoration: none;  
+        }  
+    </style>
   </head>
   <body>
+      <header>
+    <nav>
+        <ul>
+            <li>
+                <a href="/Home"> Home </a>
+            </li>
+            <li>
+                <a href="/Blogs"> Blogs </a> 
+            </li>
+            <li>
+                <a href="/createBlog"> Create Blog </a>
+            </li>
+            <li>
+                <a href="/login"> Login </a>
+            </li>
+            <li>
+                <a href="/createAccount"> Create Account </a>
+            </li>
+        </ul>
+    </nav>
+    </header>
     <!-- Main Body of Page -->
-    <div class="row m-4 border border-dark">
-        <div class="col text-center m-3">
-            <a href="/Blogs" class="btn btn-outline-primary btn-lg">Blogs</a>
-        </div>
-        <div class="col text-center m-3">
-            <a href="/Home" class="btn btn-outline-primary btn-lg">Home</a>
-        </div>
-        <div class="col text-center m-3">
-            <a href="/createBlog" class="btn btn-outline-primary btn-lg">Create</a>
-        </div>
-    </div>
-
     <div class="container">
         <div class="row m-4">
             <div class="col text-center border border-dark">
