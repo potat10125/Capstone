@@ -67,6 +67,7 @@
     </nav>
     </header>
     <!-- Main Body of Page -->
+      <h1 th:text="${'Articles by ' + author.displayName}"></h1>
                 <div class="col-6 text-left">
                     <span th:each="blog : ${blogs}" th:object = "${blog}" th:if="${blog.approved}">
                         <h3 th:text="${blog.title}">Title</h3><br/>
