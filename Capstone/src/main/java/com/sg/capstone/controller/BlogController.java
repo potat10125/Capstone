@@ -53,7 +53,7 @@ public class BlogController {
     }
 	@GetMapping("/Blogs")
     public String displayBlogs(Model model) {
-		List blogs = blogDao.getAllBlogs();
+		List blogs = blogDao.getAllApprovedBlogs();
 		model.addAttribute("blogs", blogs);
         return "Blogs";
     }
