@@ -13,7 +13,8 @@ public interface BlogDAO {
     List<Blog> getAllBlogs();
     List<Blog> getAllApprovedBlogs();
     List<Blog> getAllUnapprovedBlogs();
-    List<Blog> getBlogsByAuthorId(int id);
+//     List<Blog> getBlogsByAuthorId(int id);
+    List<Blog> getBlogsByAuthor(String user);	
     List<Blog> getBlogsByHashtag(String tag);
     List<String> getAllTags();    
 	
