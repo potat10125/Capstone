@@ -121,7 +121,7 @@ public class BlogDAODB implements BlogDAO{
 
     @Override
     public Blog getLatestBlog() {
-            final String sql = "SELECT * FROM blog ORDER BY publish_date DESC LIMIT 1;";
+            final String sql = "SELECT * FROM blog WHERE approved = TRUE ORDER BY publish_date DESC LIMIT 1;";
             Blog blog =  jdbc.queryForObject(sql, new BlogMapper());
             blog.setHashtags(getHashtagsForBlog(blog.getId()));          
             return blog;            
