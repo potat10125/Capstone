@@ -55,6 +55,9 @@
                 <a href="/createBlog"> Create Blog </a>
             </li>
             <li>
+                <a href="/pendingBlogs"> Pending Blogs</a>
+            </li>
+            <li>
                 <a href="/login"> Login </a>
             </li>
             <li>
@@ -83,7 +86,8 @@
         <div th:utext="${blog.content}"></div>
       </div>
       <div class="col">
-        <div th:text="${blog.user}"></div>
+          <div><a th:text="${'by ' + blog.user}"
+                  th:href="@{/authorDetail(id=${blog.user})}"></a></div>
       </div>
       <div class="col">
         <div th:text="${blog.publishDate}"></div>
@@ -92,7 +96,9 @@
       <div class="col border border-dark">
         <tbody>
             <tr th:each="hashtag : ${blog.hashtags}">
-                <td th:text="'#'+${hashtag}">Hashtags</td>
+              <td><a href="#" 
+                th:href="@{/hashtag(id=${hashtag})}"
+                th:text="${'#'+hashtag}"></a></td>    
             </tr>
         </tbody>
       </div>
