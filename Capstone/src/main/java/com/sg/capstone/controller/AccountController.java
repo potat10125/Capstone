@@ -70,6 +70,8 @@ public class AccountController {
             }
             return "redirect:/Blogs";
         }
+        
+    
 	
     @GetMapping("authorDetail")
     public String authorDetail(String id, Model model){

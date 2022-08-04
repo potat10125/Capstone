@@ -79,7 +79,11 @@
       <tbody>
         <div id="titles" name="titles" class="container">
           <tr th:each="blog : ${blogs}">
-              <td><font size="100"><a size="40" class="text-dark" href="#"  th:text="${blog.title}" th:href="@{viewBlog/{id}(id=${blog.id})}"></a></td>
+              <div class="row m-4 border border-dark">
+                <div class="col text-center m-3">  
+                    <td><font size="100"><a size="40" class="text-dark" href="#"  th:text="${blog.title}" th:href="@{viewBlog/{id}(id=${blog.id})}"></a></td>
+                </div>
+              </div>
           </tr>
         </div>
       </tbody>
