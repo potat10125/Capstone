@@ -1,12 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
-
-function App() {
-  return (
-    <div className="App">
-	
-    </div>
-  );
+import React, { Component } from "react";
+import SideButtonsAndStuff from "./SideButtonsAndStuff";
+ 
+class App extends Component {
+  render() {
+    return (
+      <div className="container">
+        <h3>React Form - HTML</h3>
+        <SideButtonsAndStuff /> 
+        <br /> 
+      </div> 
+    );
+  }
 }
 
 export default App;

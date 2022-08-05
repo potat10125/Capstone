@@ -59,8 +59,8 @@ function loadItems(){
 		});
     },
 
-    error: function(){
-      alert('Could not get items from server');
+    error: function(){ 
+		alert('Could not get items from server');
     }
   });
 }
@@ -102,7 +102,7 @@ $(document).ready(function(){
 				$('#moneyBox').val('0.00');
 				$('#hiddenItemId').val("0");
 				
-				$('#allItemsOnLoadUp').empty();
+				$('#allItemsOnLoadUp').empty(); 
 				loadItems();
 			},
 			error: function(data){
@@ -128,7 +128,7 @@ $(document).ready(function(){
 	})
 })
 
-//force 2 decimals for money number
+//force 2 decimals for money number 
 function moneyFormatter(moneyAmount){
 	let arrayOfChars = moneyAmount.toString().split(".")[1];
 	
