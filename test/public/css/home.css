@@ -1,0 +1,147 @@
+#sitePageTitle{
+
+  text-align: center;
+  font-size: 30px;
+
+}
+
+
+#itemBox{
+
+  width:80px;
+
+}
+
+#itemText{
+  text-align: right;
+}
+
+
+body{
+
+    background-color: #9999ff;
+
+}
+
+
+h4{
+
+  text-align: center;
+
+}
+
+
+.textLabels{
+
+  text-align:center;
+
+}
+
+
+.container-fluid{
+
+  position : absolute;
+  left : 30px;
+
+}
+
+
+/* the number on the button */
+.number{
+
+  text-align: left;
+
+}
+
+
+/* the 4 add money buttons */
+.theFour{
+
+  height: 40px;
+  width: 120px;
+
+}
+
+
+.columnButtons{
+
+  text-align:center;
+
+}
+
+
+.quarNick{
+
+  position : absolute;
+  left : 150px;
+
+}
+
+
+.itemButtons{
+
+  left: 83px;
+  margin-top: 10px;
+  margin-bottom: 40px;
+
+}
+
+
+/* Dynamically added in javascript file with this class name */
+.snacks{
+
+  border: 3px solid #a17f1a;
+  background-color: dodgerBlue;
+  color:black;
+
+}
+
+
+.theStaticContent{
+
+  align:right;
+
+}
+
+
+.theBoxes{
+
+  border: 3px solid purple;
+  text-align:center;
+
+}
+
+
+.theBoxDivs{
+
+  text-align:center;
+
+}
+
+
+.horizontalRules{
+
+  border-top: 4px solid black;
+
+}
+
+
+.moneyButtonRow{
+
+  text-align: right;
+
+}
+
+
+.moneyButtonPadding, .itemBoxPadding, #changeButtonPadding {
+
+    padding-top: 7px;
+
+}
+
+
+.purChangePadding{
+
+  padding-top: 4px;
+
+}
