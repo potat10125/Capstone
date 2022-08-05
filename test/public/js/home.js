@@ -1,42 +1,39 @@
 function HTMLItem(itemId,itemName,itemPrice,itemQuantity){
-itemPrice = moneyFormatter(itemPrice);
-
-// get html for item
-var data = 
-	`<div class="col-md-4 itemButtons">
-			<button type="button" class="btn btn-success snacks" id = "${itemName}" value="${itemPrice}">
-	<div class = "number">
-	  <h7 data-id="${itemName}Id">${itemId}</h7><br />
-	</div>
-	<div class = "item">
-	  <h7 id = "item${itemName}">${itemName}</h7> <br />
-	</div>
-	<div class = "price">
-	  $${itemPrice} <br /><br />
-	</div>
-	<div class = "quantity">
-	  <h7 id="${itemName}quantity">Quantity Left: ${itemQuantity}</h7>
-	</div>
-			</button>
-	</div>`;
-    return data;
+	itemPrice = moneyFormatter(itemPrice);
+	
+	// get html for item
+	var data = 
+		`<div class="col-md-4 itemButtons">
+				<button type="button" class="btn btn-success snacks" id = "${itemId}" value="${itemPrice}">
+		<div class = "number">
+		  <h7 data-id="${itemId}Id">${itemId}</h7><br />
+		</div>
+		<div class = "item">
+		  <h7 id = "item${itemId}">${itemName}</h7> <br />
+		</div>
+		<div class = "price">
+		  $${itemPrice} <br /><br />
+		</div>
+		<div class = "quantity">
+		  <h7 id="${itemName}quantity">Quantity Left: ${itemQuantity}</h7> 
+		</div>
+				</button>
+		</div>`;
+		return data;
 }
 
 //add money to total
 function useMoneyButton(moneyType,moneyAmount){
-  $('#' + moneyType).click(function(event){
-
-  var numberInBoxNow = parseFloat($('#moneyBox').val());
-  if(numberInBoxNow == NaN){
-    numberInBoxNow = 0;
-  }
-  var moneyValue = moneyAmount;
-  var sum = (numberInBoxNow * 10 + moneyValue * 10) / 10;
-  // var z = parseFloat(bFixed);
-   $('#moneyBox').val(sum);
-  });
-
-
+	$('#' + moneyType).click(function(event){
+		var numberInBoxNow = parseFloat($('#moneyBox').val());
+		if(numberInBoxNow == NaN){
+			numberInBoxNow = 0;
+		}
+		var moneyValue = moneyAmount;
+		var sum = (numberInBoxNow * 10 + moneyValue * 10) / 10;
+		// var z = parseFloat(bFixed);
+		$('#moneyBox').val(sum);
+	});
 }
 
 
@@ -47,18 +44,19 @@ function loadItems(){
     url: 'http://vending.us-east-1.elasticbeanstalk.com/items',
 
     success: function(itemsArray){
-      $.each(itemsArray, function(index,item){
-        var itemName = ''+item.id;
-        var itemPrice = item.price;
-        var itemQuantity = item.quantity;
-        var itemId = item.id;
+		$.each(itemsArray, function(index,item){
+			console.log(item.name);
+			var itemName = ''+item.name;
+			var itemPrice = item.price;
+			var itemQuantity = item.quantity;
+			var itemId = item.id;
 
-        $('#allItemsOnLoadUp').append(HTMLItem(itemId,itemName, itemPrice, itemQuantity));
-		$('#' +itemName).click(function() {
-          selectItem(itemId, itemName);
-        });
+			$('#allItemsOnLoadUp').append(HTMLItem(itemId,itemName, itemPrice, itemQuantity));
+			$('#' +itemId).click(function() {
+			  selectItem(itemId, itemName);
+			});
 
-      });
+		});
     },
 
     error: function(){
@@ -103,6 +101,9 @@ $(document).ready(function(){
 				$('#messageBox').val('Thank You!!!');
 				$('#moneyBox').val('0.00');
 				$('#hiddenItemId').val("0");
+				
+				$('#allItemsOnLoadUp').empty();
+				loadItems();
 			},
 			error: function(data){
 				var errorMessages = (data.responseJSON.message);
