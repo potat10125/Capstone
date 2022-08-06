@@ -37,6 +37,7 @@ class App extends React.Component{
       }],
       wallet: 0.00,
       itemId: 1,
+      itemNum: "",
       coins:{
         "quarters": 0,
         "dimes": 0,
@@ -65,9 +66,11 @@ class App extends React.Component{
     this.setState({wallet : x});
   }      
 
-  itemSelector(i){
+  itemSelector(id, index){
     // alert("Test");
-    this.setState({itemId : i});
+    this.setState({itemId : id});
+    this.setState({itemNum : index});
+
   }
 
   purchaseCalculations(coin){
@@ -188,8 +191,9 @@ class App extends React.Component{
             <h2>Items</h2>
             <tbody>
             {this.state.productData.slice(0,9).map((product, index) => {
-                 return <div onClick={() => this.itemSelector(product.id)} style={productButtonStyle}>  
-                      <p style={{textAlign:"left", margin:"0px"}}>{product.id}</p>
+                 return <div onClick={() => this.itemSelector(product.id, index+1)} style={productButtonStyle}> 
+                      <p style={{textAlign:"left", margin:"0px"}}>{index+1}</p>
+                      {/* <p style={{textAlign:"left", margin:"0px"}}>{product.id}</p> */}
                       {product.name}<br></br>
                       ${product.price.toFixed(2)}<br></br>
                       Quantity Left: {product.quantity}
@@ -236,7 +240,7 @@ class App extends React.Component{
                 </Form.Group>
                 <Form.Group controlId="itemSelected">
                     <label>Item:</label>
-                    <Form.Control type="text" placeholder={this.state.itemId} readOnly/>
+                    <Form.Control type="text" placeholder={this.state.itemNum} readOnly/>
                 </Form.Group>  
                 </Row>
                 <br/>
